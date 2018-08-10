@@ -28,7 +28,8 @@ class Profiler(object):
             if app.config["SQLALCHEMY_RECORD_QUERIES"] is False:
                 raise Exception("SQLALCHEMY_RECORD_QUERIES is not set.")
 
-            current_app.after_request(self.__class__.log_queries)
+            with app.app_context():
+                app.after_request(self.__class__.log_queries)
 
     @staticmethod
     def log_queries(response):
