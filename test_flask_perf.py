@@ -17,6 +17,9 @@ class TestFlaskProfiler(unittest.TestCase):
         cov.stop()
         cov.report(include='flask_perf/*', show_missing=True)
 
+        with open(".coverage", "w") as f:
+            cov.report(include='flask_perf/*', file=f, show_missing=True)
+
     def test_attach_app(self):
         app = Flask(__name__)
         profiler = Profiler(app)
