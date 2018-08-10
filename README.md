@@ -1,5 +1,7 @@
 # Flask-Perf
 
+[![Build Status](https://travis-ci.org/abetlen/Flask-Perf.svg?branch=master)](https://travis-ci.org/abetlen/Flask-Perf)
+
 A Flask extension for code and database query profiling.
 
 This profiler is an implementation of the methods described in this post [post](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvi-debugging-testing-and-profiling) however the extension allows you to also control profiling through the application config.
