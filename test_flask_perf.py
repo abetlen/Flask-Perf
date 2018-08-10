@@ -62,6 +62,18 @@ class TestFlaskProfiler(unittest.TestCase):
         with self.assertRaises(ValueError):
             profiler.init_app(app)
 
+    def test_log_queries(self):
+        with patch("flask_perf.get_debug_queries") as mock_get_debug_queries, patch("flask_perf.current_app") as mock_current_app:
+            mock_current_app.config = { 
+                "PROFILER_SQLALCHEMY_FORMAT" : "",
+                "PROFILER_SQLALCHEMY_THRESHOLD" : 0.5,
+            }
+            mockQuery = MagicMock()
+            mockQuery.duration = 2
+            mock_get_debug_queries.return_value = [mockQuery]
+            Profiler.log_queries(None)
+            mock_get_debug_queries.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()
