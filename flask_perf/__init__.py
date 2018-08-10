@@ -8,6 +8,13 @@ except ImportError:
     flask_sqlalchemy_available = False
 
 
+PROFILER_DEFAULT_ENABLED = False
+PROFILER_DEFAULT_RESTRICTIONS = []
+PROFILER_DEFAULT_SQLALCHEMY_ENABLED = False
+PROFILER_DEFAULT_SQLALCHEMY_THRESHOLD = 0
+PROFILER_DEFAULT_SQLALCHEMY_FORMAT = "\n\n{duration:1.2e}s\n\n{statement}\n"
+
+
 class Profiler(object):
     def __init__(self, app=None):
         self.app = app
@@ -15,11 +22,11 @@ class Profiler(object):
             self.init_app(app)
 
     def init_app(self, app):
-        app.config.setdefault("PROFILER_ENABLED", False)
-        app.config.setdefault("PROFILER_RESTRICTIONS", [])
-        app.config.setdefault("PROFILER_SQLALCHEMY_ENABLED", False)
-        app.config.setdefault("PROFILER_SQLALCHEMY_THRESHOLD", 0)
-        app.config.setdefault("PROFILER_SQLALCHEMY_FORMAT", "{statement}\n{parameters}\n{duration}s\n{context}\n")
+        app.config.setdefault("PROFILER_ENABLED", PROFILER_DEFAULT_ENABLED)
+        app.config.setdefault("PROFILER_RESTRICTIONS", PROFILER_DEFAULT_RESTRICTIONS)
+        app.config.setdefault("PROFILER_SQLALCHEMY_ENABLED", PROFILER_DEFAULT_SQLALCHEMY_ENABLED)
+        app.config.setdefault("PROFILER_SQLALCHEMY_THRESHOLD", PROFILER_DEFAULT_SQLALCHEMY_THRESHOLD)
+        app.config.setdefault("PROFILER_SQLALCHEMY_FORMAT", PROFILER_DEFAULT_SQLALCHEMY_FORMAT)
 
         if app.config["PROFILER_ENABLED"]:
             app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=app.config["PROFILER_RESTRICTIONS"])
