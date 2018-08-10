@@ -22,7 +22,7 @@ class TestFlaskProfiler(unittest.TestCase):
         self.assertEqual(app.config["PROFILER_RESTRICTIONS"], [])
         self.assertEqual(app.config["PROFILER_SQLALCHEMY_ENABLED"], False)
         self.assertEqual(app.config["PROFILER_SQLALCHEMY_THRESHOLD"], 0)
-        self.assertEqual(app.config["PROFILER_SQLALCHEMY_FORMAT"], "statement: {query}\nparameters: {parameters}\nduration: {duration}s\ncontext: {context}\n")
+        self.assertEqual(app.config["PROFILER_SQLALCHEMY_FORMAT"], "{statement}\n{parameters}\n{duration}s\n{context}\n")
 
     def test_attach_middleware(self):
         app = Flask(__name__)
@@ -67,6 +67,7 @@ class TestFlaskProfiler(unittest.TestCase):
             mock_current_app.config = { 
                 "PROFILER_SQLALCHEMY_FORMAT" : "",
                 "PROFILER_SQLALCHEMY_THRESHOLD" : 0.5,
+                "PROFILER_SQLALCHEMY_FORMAT" : "{statement}\n{parameters}\n{start_time}\n{end_time}\n{duration}\n{context}\n",
             }
             mockQuery = MagicMock()
             mockQuery.duration = 2

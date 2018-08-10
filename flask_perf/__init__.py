@@ -19,7 +19,7 @@ class Profiler(object):
         app.config.setdefault("PROFILER_RESTRICTIONS", [])
         app.config.setdefault("PROFILER_SQLALCHEMY_ENABLED", False)
         app.config.setdefault("PROFILER_SQLALCHEMY_THRESHOLD", 0)
-        app.config.setdefault("PROFILER_SQLALCHEMY_FORMAT", "statement: {query}\nparameters: {parameters}\nduration: {duration}s\ncontext: {context}\n")
+        app.config.setdefault("PROFILER_SQLALCHEMY_FORMAT", "{statement}\n{parameters}\n{duration}s\n{context}\n")
 
         if app.config["PROFILER_ENABLED"]:
             app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=app.config["PROFILER_RESTRICTIONS"])
@@ -38,6 +38,12 @@ class Profiler(object):
     def log_queries(response):
         for query in get_debug_queries():
             if query.duration >= current_app.config["PROFILER_SQLALCHEMY_THRESHOLD"]:
-                current_app.logger.debug(current_app.config["PROFILER_SQLALCHEMY_FORMAT"].format(dict(statement=query.statement, parameters=query.parameters, duration=query.duration, context=query.context)))
+                current_app.logger.debug(current_app.config["PROFILER_SQLALCHEMY_FORMAT"]\
+                    .format(statement=query.statement, 
+                            parameters=query.parameters, 
+                            start_time=query.start_time, 
+                            end_time=query.end_time, 
+                            duration=query.duration, 
+                            context=query.context))
 
         return response
