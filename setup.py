@@ -29,10 +29,12 @@ setup(
     ],
     extras_require = {
         "flask_sqlalchemy": {
-            "Flask-SQLALchemy"
+            "flask_sqlalchemy"
         }
     },
-    tests_require=[],
+    tests_require=[
+        "flask_sqlalchemy"
+    ],
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
