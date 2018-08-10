@@ -10,7 +10,7 @@ from setuptools import setup
 setup(
     name="Flask-Perf",
     version="1.0",
-    url="",
+    url="https://github.com/abetlen/Flask-Perf",
     license="MIT",
     author="Andrei Betlen",
     author_email="abetlen@gmail.com",
