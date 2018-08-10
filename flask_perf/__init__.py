@@ -37,7 +37,7 @@ class Profiler(object):
     @staticmethod
     def log_queries(response):
         for query in get_debug_queries():
-            if query.duration >= current_app.config["PROFILER_LOG_SQLALCHEMY_THRESHOLD"]:
+            if query.duration >= current_app.config["PROFILER_SQLALCHEMY_THRESHOLD"]:
                 current_app.logger.debug(current_app.config["PROFILER_SQLALCHEMY_FORMAT"].format(dict(statement=query.statement, parameters=query.parameters, duration=query.duration, context=query.context)))
 
         return response
