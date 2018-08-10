@@ -33,6 +33,7 @@ setup(
         }
     },
     tests_require=[
+        "coverage",
         "flask_sqlalchemy"
     ],
     classifiers=[

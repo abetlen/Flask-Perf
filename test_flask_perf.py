@@ -1,11 +1,22 @@
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
+
+from coverage import coverage
+
+cov = coverage(branch=True)
+cov.start()
 
 from flask import Flask
 from flask_perf import Profiler
 
 
 class TestFlaskProfiler(unittest.TestCase):
+
+    @classmethod
+    def tearDownClass(cls):
+        cov.stop()
+        cov.report(include='flask_perf/*', show_missing=True)
+
     def test_attach_app(self):
         app = Flask(__name__)
         profiler = Profiler(app)
