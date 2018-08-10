@@ -33,6 +33,7 @@ setup(
         }
     },
     tests_require=[
+        "mock",
         "coverage",
         "flask_sqlalchemy"
     ],
