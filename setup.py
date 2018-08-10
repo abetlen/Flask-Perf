@@ -11,7 +11,7 @@ with open('README.md') as f:
 
 setup(
     name="Flask-Perf",
-    version="1.0.1",
+    version="1.0.2",
     url="https://github.com/abetlen/Flask-Perf",
     license="MIT",
     author="Andrei Betlen",
