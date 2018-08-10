@@ -37,7 +37,7 @@ def index():
 | `PROFILER_RESTRICTIONS` | List of profiler restrictions, described in depth in the [Official Python  Docs](https://docs.python.org/dev/library/profile.html#pstats.Stats.print_stats) | `[]`   |
 | `PROFILER_SQLALCHEMY_ENABLED` | Enable SQLAlchemy query logging. **Note**: This option requires that the `flask_sqlalchemy` package is installed and the `SQLALCHEMY_RECORD_QUERIES` config option is set to `True`. | `False` |
 | `PROFILER_SQLALCHEMY_THRESHOLD` | Minimum query duration in seconds to log.  | `0` |
-| `PROFILER_SQLALCHEMY_FORMAT` | Logged SQLAlchemy query format. See the [Flask-SQLAlchemy docs](http://flask-sqlalchemy.pocoo.org/2.3/api/#flask_sqlalchemy.get_debug_queries) for a list of attributes you can use in this format string.   | `"statement: {query}\nparameters: {parameters}\nduration: {duration}s\ncontext: {context}\n"` |
+| `PROFILER_SQLALCHEMY_FORMAT` | Logged SQLAlchemy query format. See the [Flask-SQLAlchemy docs](http://flask-sqlalchemy.pocoo.org/2.3/api/#flask_sqlalchemy.get_debug_queries) for a list of attributes you can use in this format string.   | `"\n\n{duration:1.2e}s\n\n{statement}\n"` |
 
 ## Links
 
