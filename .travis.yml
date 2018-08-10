@@ -3,5 +3,7 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
-install: python setup.py install
+install: 
+  - python setup.py install
+  - pip install flask_sqlalchemy
 script: python setup.py test
