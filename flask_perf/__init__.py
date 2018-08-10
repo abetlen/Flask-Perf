@@ -25,8 +25,11 @@ class Profiler(object):
             app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=app.config["PROFILER_RESTRICTIONS"])
 
         if app.config["PROFILER_SQLALCHEMY_ENABLED"]:
+            if flask_sqlalchemy_available is False:
+                raise ImportError("Failed to import flask_sqlalchemy, please make sure it's installed before using the query profiler.")
+
             if app.config["SQLALCHEMY_RECORD_QUERIES"] is False:
-                raise Exception("SQLALCHEMY_RECORD_QUERIES is not set.")
+                raise ValueError("SQLALCHEMY_RECORD_QUERIES is not set.")
 
             with app.app_context():
                 app.after_request(self.__class__.log_queries)
