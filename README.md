@@ -30,7 +30,7 @@ def index():
 ## Configuration
 
 | Config Name | Description | `default` |
-| ----------- |:------------| -------:|
+| :---------- |:------------| -------:|
 | `PROFILER_ENABLED` | Enable the profiler. | `False`  |
 | `PROFILER_RESTRICTIONS` | List of profiler restrictions, described in depth in the [Official Python  Docs](https://docs.python.org/dev/library/profile.html#pstats.Stats.print_stats) | `[]`   |
 | `PROFILER_SQLALCHEMY_ENABLED` | Enable SQLAlchemy query logging. **Note**: This option requires that the `flask_sqlalchemy` package is installed and the `SQLALCHEMY_RECORD_QUERIES` config option is set to `True`. | `False` |
