@@ -4,9 +4,7 @@
 [![Build Status](https://travis-ci.org/abetlen/Flask-Perf.svg?branch=master)](https://travis-ci.org/abetlen/Flask-Perf)
 [![Coverage Status](https://coveralls.io/repos/github/abetlen/Flask-Perf/badge.svg?branch=master)](https://coveralls.io/github/abetlen/Flask-Perf?branch=master)
 
-A Flask extension for code and database query profiling.
-
-This profiler is an implementation of the methods described in this post [post](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvi-debugging-testing-and-profiling) however the extension allows you to also control profiling through the application config.
+A simple Flask extension for profiling your application code and database queries.
 
 ## Installation
 
@@ -40,3 +38,7 @@ def index():
 | `PROFILER_SQLALCHEMY_ENABLED` | Enable SQLAlchemy query logging. **Note**: This option requires that the `flask_sqlalchemy` package is installed and the `SQLALCHEMY_RECORD_QUERIES` config option is set to `True`. | `False` |
 | `PROFILER_SQLALCHEMY_THRESHOLD` | Minimum query duration in seconds to log.  | `0` |
 | `PROFILER_SQLALCHEMY_FORMAT` | Logged SQLAlchemy query format. See the [Flask-SQLAlchemy docs](http://flask-sqlalchemy.pocoo.org/2.3/api/#flask_sqlalchemy.get_debug_queries) for a list of attributes you can use in this format string.   | `"statement: {query}\nparameters: {parameters}\nduration: {duration}s\ncontext: {context}\n"` |
+
+## Links
+
+- [Blog Post that inspired this package.](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvi-debugging-testing-and-profiling)
