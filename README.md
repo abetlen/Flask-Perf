@@ -1,5 +1,6 @@
 # Flask-Perf
 
+[![PyPI version](https://badge.fury.io/py/Flask-Perf.svg)](https://badge.fury.io/py/Flask-Perf)
 [![Build Status](https://travis-ci.org/abetlen/Flask-Perf.svg?branch=master)](https://travis-ci.org/abetlen/Flask-Perf)
 
 A Flask extension for code and database query profiling.
