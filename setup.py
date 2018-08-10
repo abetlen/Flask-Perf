@@ -6,6 +6,8 @@ Flask-Perf
 """
 from setuptools import setup
 
+with open('README.md') as f:
+    long_description = f.read()
 
 setup(
     name="Flask-Perf",
@@ -15,7 +17,8 @@ setup(
     author="Andrei Betlen",
     author_email="abetlen@gmail.com",
     description="A simple profiler for flask applications.",
-    long_description=__doc__,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     packages=["flask_perf"],
     test_suite="test_flask_perf",
     zip_safe=False,
