@@ -9,14 +9,14 @@ from setuptools import setup
 
 setup(
     name="Flask-Perf",
-    version="1.0",
+    version="1.0.1",
     url="https://github.com/abetlen/Flask-Perf",
     license="MIT",
     author="Andrei Betlen",
     author_email="abetlen@gmail.com",
     description="A simple profiler for flask applications.",
     long_description=__doc__,
-    py_modules=["flask_perf"],
+    packages=["flask_perf"],
     test_suite="test_flask_perf",
     zip_safe=False,
     include_package_data=True,
