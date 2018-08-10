@@ -24,12 +24,12 @@ setup(
     install_requires=[
         "Flask"
     ],
-    extra_require = {
+    extras_require = {
         "flask_sqlalchemy": {
             "Flask-SQLALchemy"
         }
     },
-    test_require=[],
+    tests_require=[],
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
